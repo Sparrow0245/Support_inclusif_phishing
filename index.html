@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing : déjouer le piège</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header role="banner">
+        <div class="container header-content">
+            <h1>Phishing : déjouer le piège</h1>
+            <p class="subtitle">Site pédagogique de sensibilisation</p>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+        <!-- Vue Accueil -->
+        <section id="view-home" class="view active" aria-labelledby="home-title">
+            <h2 id="home-title" tabindex="-1">Bienvenue sur votre parcours d'apprentissage</h2>
+            <p>Apprenez à identifier les tentatives de phishing à votre rythme, sans stress ni contrainte de temps.</p>
+            
+            <div class="card-list" id="lessons-list-container">
+                <!-- Injection dynamique des cartes de leçons -->
+            </div>
+        </section>
+
+        <!-- Vue Leçon / Activité -->
+        <section id="view-lesson" class="view" aria-labelledby="lesson-title" hidden>
+            <div class="lesson-header">
+                <button id="btn-back-home" class="btn btn-secondary">← Retour au sommaire</button>
+                <span id="progress-indicator" class="progress-indicator">Leçon X - Activité Y/Z</span>
+            </div>
+
+            <article class="activity-card" aria-live="polite">
+                <h2 id="lesson-title" tabindex="-1">Titre de la leçon</h2>
+                <h3 id="activity-subtitle" class="activity-subtitle"></h3>
+                <p id="activity-instruction" class="instruction"></p>
+                
+                <div id="message-box-wrapper" class="message-box" aria-label="Extrait de message reçu">
+                    <p><strong>Contexte / Expéditeur :</strong> <span id="msg-sender"></span></p>
+                    <p><strong>Objet :</strong> <span id="msg-subject"></span></p>
+                </div>
+
+                <fieldset class="options-group">
+                    <legend id="activity-question" class="question-legend"></legend>
+                    <div id="options-container" class="options-container">
+                        <!-- Injection dynamique des options -->
+                    </div>
+                </fieldset>
+
+                <div class="actions-row">
+                    <button id="btn-submit-answer" class="btn btn-primary">Valider ma réponse</button>
+                </div>
+
+                <!-- Conteneur de feedback -->
+                <div id="feedback-container" class="feedback-container" hidden tabindex="-1"></div>
+
+                <!-- Conteneur d'aide (Indice / Explication) -->
+                <div id="help-container" class="help-container" hidden tabindex="-1"></div>
+            </article>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>© 2026 - Phishing : déjouer le piège. Aucun stockage distant, respect total de la vie privée.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
