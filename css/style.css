@@ -1,0 +1,306 @@
+/* Styles globaux et accessibilité renforcée (WCAG 2.2 AA) */
+:root {
+    --bg-color: #F8F9FA;
+    --surface-color: #FFFFFF;
+    --text-main: #1E293B;
+    --text-muted: #475569;
+    --primary: #0284C7;
+    --primary-hover: #0369A1;
+    --success: #15803D;
+    --success-bg: #DCFCE7;
+    --error: #991B1B;
+    --error-bg: #FEE2E2;
+    --border-color: #94A3B8;
+    --radius: 8px;
+    --transition: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    color: var(--text-main);
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+main {
+    flex: 1;
+    margin-bottom: 3rem;
+}
+
+footer {
+    background-color: var(--surface-color);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Vues et masquage */
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* Cartes */
+.card, .activity-card {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.card p, #view-home p {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+}
+
+/* Badges d'état accessibles */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-todo { background-color: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+.badge-progress { background-color: #E0F2FE; color: #0369A1; border: 1px solid #7DD3FC; }
+.badge-completed { background-color: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; }
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+    background-color: #94A3B8;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    background-color: #F1F5F9;
+}
+
+.btn-danger-outline {
+    background-color: transparent;
+    color: var(--error);
+    border: 1px solid var(--error);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-danger-outline:hover {
+    background-color: var(--error-bg);
+}
+
+/* Focus visible accessibilité renforcée (WCAG) */
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 3px solid #D97706;
+    outline-offset: 3px;
+}
+
+/* Éléments de l'activité */
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.progress-indicator {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.instruction {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.message-box {
+    background-color: #F1F5F9;
+    border-left: 4px solid var(--primary);
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #0F172A;
+}
+
+.options-group {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition), border-color var(--transition);
+}
+
+.option-label:hover {
+    background-color: #F8FAFC;
+    border-color: var(--primary);
+}
+
+.option-label input[type="radio"] {
+    width: 1.3rem;
+    height: 1.3rem;
+    accent-color: var(--primary);
+}
+
+.actions-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Feedbacks */
+.feedback-container {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+.feedback-container.success {
+    background-color: var(--success-bg);
+    color: var(--success);
+    border: 1px solid #86EFAC;
+}
+
+.feedback-container.error {
+    background-color: var(--error-bg);
+    color: var(--error);
+    border: 1px solid #FCA5A5;
+}
+
+.help-box {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    background-color: #F8FAFC;
+}
+
+.help-box h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.hint-box {
+    border-left: 4px solid #CA8A04;
+}
+
+.explanation-box {
+    border-left: 4px solid var(--primary);
+}
+
+.resume-banner {
+    background-color: #E0F2FE;
+    border: 1px solid #7DD3FC;
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
